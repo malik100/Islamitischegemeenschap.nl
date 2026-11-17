@@ -745,7 +745,7 @@ function showThanks() {
   $("form").hidden = true;
   document.querySelector(".progress").hidden = true;
   $("steprow").hidden = true;
-  $("thanks").replaceChildren(
+  $("thanks").replaceChildren(...[
     el("h2", { text: tx("thanksT") }),
     el("p", { text: survey[lang].thanks }),
     DEMO ? el("p", { class: "demo", text: tx("demo") }) : null,
@@ -753,7 +753,7 @@ function showThanks() {
       submitted = false; setSurvey(VOLUNTEER); $("thanks").hidden = true; $("form").hidden = false;
       const b = $("next"); b.disabled = false; render(); pushNav(); toTop();
     }) : null,
-    el("p", {}, el("button", { type: "button", class: "secondary", onclick: () => goHome(true) }, tx("home"))));
+    el("p", {}, el("button", { type: "button", class: "secondary", onclick: () => goHome(true) }, tx("home")))].filter(Boolean));
   $("thanks").hidden = false;
   toTop();
 }
