@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Islamitische Gemeenschap</title>
+<meta name="description" content="Samen de islam helder uitleggen en nieuwe moslims goed opvangen.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Islamitische Gemeenschap">
+<meta property="og:title" content="Islamitische Gemeenschap">
+<meta property="og:description" content="Samen de islam helder uitleggen en nieuwe moslims goed opvangen. Doe mee aan het onderzoek of word vrijwilliger.">
+<meta property="og:url" content="https://islamitischegemeenschap.nl/">
+<meta property="og:image" content="https://islamitischegemeenschap.nl/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><path d='M8 34V19a12 12 0 0 1 24 0v15' fill='none' stroke='%231f6f5c' stroke-width='3.2' stroke-linecap='round'/><circle cx='14' cy='28' r='2.6' fill='%231f6f5c'/><circle cx='20' cy='25' r='2.6' fill='%23c9a24a'/><circle cx='26' cy='28' r='2.6' fill='%231f6f5c'/></svg>">
+<style>
+  :root{
+    --bg:#f6f4ef; --card:#ffffff; --ink:#1c2a28; --muted:#5d6967;
+    --accent:#1f6f5c; --accent-soft:#e4f1ec; --line:#e1ddd3; --err:#a3352b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:680px;margin:0 auto;padding:20px 16px 64px}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .brandwrap{display:flex;align-items:center;gap:8px}
+  .logo{width:28px;height:28px;flex:none}
+  footer{margin-top:32px;font-size:13px;color:var(--muted);text-align:center}
+  .brand{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .lang button{border:0;border-radius:0;padding:6px 12px;background:transparent;color:var(--muted);font-size:14px}
+  .lang button[aria-pressed="true"]{background:var(--accent);color:#fff}
+  h1{font-size:26px;line-height:1.25;margin:18px 0 4px}
+  .sub{color:var(--muted);margin:0 0 16px}
+  .progress{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+  .progress>div{height:100%;width:0;background:var(--accent);transition:width .3s}
+  .steplbl{font-size:13px;color:var(--muted);margin:6px 0 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin:16px 0}
+  h2{font-size:20px;margin:0 0 16px}
+  fieldset{border:0;margin:0 0 26px;padding:0;min-width:0}
+  fieldset:last-child{margin-bottom:0}
+  legend{font-weight:600;margin-bottom:8px;padding:0}
+  .hint{font-size:14px;color:var(--muted);margin:-4px 0 8px}
+  .opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin:6px 0;cursor:pointer;background:#fff}
+  .opt:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+  .opt:has(input:disabled){opacity:.5;cursor:not-allowed}
+  .opt input{accent-color:var(--accent);margin-top:4px;flex:none}
+  input[type=text],input[type=number],input[type=email],textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff;color:var(--ink)}
+  input:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+  textarea{min-height:110px;resize:vertical}
+  .other{margin-top:6px}
+  .scale{display:flex;gap:6px}
+  .scale label{flex:1;text-align:center;border:1px solid var(--line);border-radius:8px;padding:8px 0;cursor:pointer;background:#fff;position:relative}
+  .scale input{position:absolute;opacity:0;pointer-events:none}
+  .scale label:has(input:checked){background:var(--accent);color:#fff;border-color:var(--accent)}
+  .scale label:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+  .ends{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:4px}
+  .gridrow{padding:12px 0;border-top:1px solid var(--line)}
+  .gridrow:first-of-type{border-top:0}
+  .gridrow .stmt{margin:0 0 6px}
+  .gridrow .lbl{font-size:13px;color:var(--muted);margin:8px 0 4px}
+  details{background:var(--accent-soft);border-radius:10px;padding:10px 14px;margin:12px 0 18px}
+  summary{cursor:pointer;font-weight:600}
+  details p{margin:8px 0 0;font-size:15px}
+  nav{display:flex;gap:10px;justify-content:space-between;margin-top:8px}
+  button{font:inherit;border-radius:10px;padding:12px 20px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+  button.secondary{background:transparent;color:var(--accent)}
+  button:disabled{opacity:.6;cursor:wait}
+  .msg{color:var(--err);min-height:1.5em;margin:10px 0 0}
+  .demo{background:#fff4d6;border:1px solid #ecd796;border-radius:10px;padding:10px 14px;font-size:14px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .choice{display:flex;flex-direction:column;gap:2px;width:100%;text-align:left;background:#fff;color:var(--ink);border:1px solid var(--line);padding:16px;margin:10px 0}
+  .choice:hover,.choice:focus-visible{border-color:var(--accent);background:var(--accent-soft)}
+  .choice span{font-size:14px;color:var(--muted)}
+  .vol{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+  .vol h3{font-size:18px;margin:0 0 6px}
+  .vol p{margin:0 0 4px}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <span class="brandwrap"><svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 34V19a12 12 0 0 1 24 0v15" fill="none" stroke="#1f6f5c" stroke-width="3.2" stroke-linecap="round"/><circle cx="14" cy="28" r="2.6" fill="#1f6f5c"/><circle cx="20" cy="25" r="2.6" fill="#c9a24a"/><circle cx="26" cy="28" r="2.6" fill="#1f6f5c"/></svg><span class="brand" id="brand"></span></span>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="nl">NL</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+  <h1 id="title"></h1>
+  <p class="sub" id="sub"></p>
+  <div class="progress" aria-hidden="true"><div id="bar"></div></div>
+  <p class="steplbl" id="steplbl"></p>
+
+  <form id="form" novalidate>
+    <div class="card" id="step"></div>
+    <div class="hp" aria-hidden="true"><label>Website <input type="text" id="hp" tabindex="-1" autocomplete="off"></label></div>
+    <nav>
+      <button type="button" class="secondary" id="back"></button>
+      <button type="submit" id="next"></button>
+    </nav>
+    <p class="msg" id="msg" role="alert"></p>
+  </form>
+
+  <section class="card" id="thanks" hidden></section>
+  <footer id="foot"></footer>
+</main>
+
+<script>
+/* ===== Instellingen: vul deze in (zie README.md) ===== */
+const CONFIG = {
+  SUPABASE_URL: "https://JOUW-PROJECT.supabase.co",
+  SUPABASE_KEY: "JOUW-PUBLISHABLE-OF-ANON-KEY",
+  RESEARCHER:   "Islamitische Gemeenschap (islamitischegemeenschap.nl)",
+  CONTACT:      "info@islamitischegemeenschap.nl",
+  DELETE_BY:    "[datum, bijv. 31 december 2027]"
+};
+const DEMO = CONFIG.SUPABASE_URL.includes("JOUW-PROJECT");
+
+/* ===== Algemene teksten ===== */
+const T = {
+  nl: {
+    brand: "Islamitische Gemeenschap",
+    tagline: "Samen de islam helder uitleggen en nieuwe moslims goed opvangen.",
+    chooseT: "Welke vragenlijst past bij jou?",
+    chooseSub: "Dit onderzoek bestaat uit twee korte vragenlijsten.",
+    chooseConvert: "Ik ben moslim geworden (bekeerling)",
+    chooseConvertSub: "Ik ben niet opgegroeid in een moslimgezin.",
+    chooseOpen: "Ik ben geen moslim",
+    chooseOpenSub: "Ongeacht of je gelovig bent of niet.",
+    chooseNote: "Ben je als moslim opgegroeid? Dan val je buiten de doelgroep, maar je helpt enorm door de link te delen.",
+    step: "Stap {a} van {b}",
+    next: "Volgende", back: "Vorige", submit: "Versturen", sending: "Bezig met versturen…",
+    other: "Anders, namelijk…",
+    consentReq: "Vink de toestemming aan om verder te gaan.",
+    error: "Versturen lukte niet. Controleer je verbinding en probeer het opnieuw.",
+    thanksT: "Bedankt!",
+    demo: "Demomodus: er is nog geen database gekoppeld, dus er is niets opgeslagen.",
+    before: "Vóór mijn bekering", now: "Nu",
+    disagree: "helemaal oneens", agree: "helemaal eens",
+    notAtAll: "helemaal niet", veryMuch: "heel erg",
+    veryNeg: "zeer negatief", veryPos: "zeer positief",
+    nothing: "niets", aLot: "heel veel",
+    multi: "Meerdere antwoorden mogelijk.", max3: "Kies maximaal 3.",
+    required: "Vul de verplichte velden (*) in om verder te gaan.",
+    emailInvalid: "Vul een geldig e-mailadres in.",
+    volunteerT: "Word vrijwilliger bij Islamitische Gemeenschap",
+    volunteerGoal: "Naast dit onderzoek bouwt Islamitische Gemeenschap een netwerk van bekeerlingen en betrokken moslims. Samen willen we de islam helder en eerlijk uitleggen aan wie er nieuwsgierig naar is, en nieuwe moslims goed opvangen, zodat niemand er alleen voor staat. Iedereen draagt bij met wat hij of zij kan: als buddy voor een nieuwe moslim, door content te maken of te vertalen, of met advies vanuit je beroep. We vragen nooit om geld, alleen om je kennis en tijd.",
+    volunteerBtn: "Meld je aan als vrijwilliger",
+    volunteerBtnSub: "Ca. 5 minuten · niet anoniem · staat los van het onderzoek",
+    privacyT: "Privacy en gegevens",
+    privacy: "Dit onderzoek wordt uitgevoerd door {r}. Het doel is beter te begrijpen hoe mensen de islam leren kennen, welke vragen en bezwaren niet-moslims hebben, en hoe de islam duidelijker uitgelegd kan worden. Je antwoorden worden zonder naam opgeslagen in een beveiligde database in de EU en alleen voor dit onderzoek gebruikt. Een e-mailadres vragen we alleen als je wilt meedoen aan een vervolggesprek; dat wordt los van je antwoorden bewaard. Alle gegevens worden uiterlijk {d} verwijderd. Omdat je anoniem meedoet, kunnen we je antwoorden achteraf niet terugvinden. Twijfel je, stop dan gerust halverwege. Vragen: {c}."
+  },
+  en: {
+    brand: "Islamitische Gemeenschap",
+    tagline: "Explaining Islam clearly and welcoming new Muslims, together.",
+    chooseT: "Which survey fits you?",
+    chooseSub: "This research consists of two short surveys.",
+    chooseConvert: "I became Muslim (convert/revert)",
+    chooseConvertSub: "I was not raised in a Muslim family.",
+    chooseOpen: "I am not Muslim",
+    chooseOpenSub: "Whether or not you are religious.",
+    chooseNote: "Were you raised Muslim? Then you're outside the target group, but sharing the link helps a lot.",
+    step: "Step {a} of {b}",
+    next: "Next", back: "Back", submit: "Submit", sending: "Sending…",
+    other: "Other, namely…",
+    consentReq: "Please tick the consent box to continue.",
+    error: "Sending failed. Check your connection and try again.",
+    thanksT: "Thank you!",
+    demo: "Demo mode: no database is connected yet, so nothing was saved.",
+    before: "Before my conversion", now: "Now",
+    disagree: "strongly disagree", agree: "strongly agree",
+    notAtAll: "not at all", veryMuch: "very much",
+    veryNeg: "very negative", veryPos: "very positive",
+    nothing: "nothing", aLot: "a lot",
+    multi: "Multiple answers allowed.", max3: "Choose up to 3.",
+    required: "Please fill in the required fields (*) to continue.",
+    emailInvalid: "Please enter a valid email address.",
+    volunteerT: "Volunteer with Islamitische Gemeenschap",
+    volunteerGoal: "Alongside this research, Islamitische Gemeenschap is building a network of converts and engaged Muslims. Together we want to explain Islam clearly and honestly to anyone who is curious, and welcome new Muslims well, so nobody has to find their way alone. Everyone contributes what they can: as a buddy for a new Muslim, by creating or translating content, or with advice from their profession. We never ask for money, only your knowledge and time.",
+    volunteerBtn: "Sign up as a volunteer",
+    volunteerBtnSub: "About 5 minutes · not anonymous · separate from the research",
+    privacyT: "Privacy and data",
+    privacy: "This research is carried out by {r}. Its aim is to better understand how people come to know Islam, what questions and objections non-Muslims have, and how Islam can be explained more clearly. Your answers are stored without your name in a secure database in the EU and used only for this research. We only ask for an email address if you want to join a follow-up interview; it is stored separately from your answers. All data will be deleted by {d} at the latest. Because you take part anonymously, we cannot find your answers afterwards. If in doubt, feel free to stop halfway. Questions: {c}."
+  }
+};
+
+/* ===== Antwoordopties: [code, NL, EN] of [code, label] ===== */
+const OTHER = ["other","Anders","Other"];
+const YESNO = [["yes","Ja","Yes"],["no","Nee","No"]];
+const AGES = [["18-24","18–24"],["25-34","25–34"],["35-44","35–44"],["45-54","45–54"],["55+","55+"]];
+const GENDER = [["male","Man","Male"],["female","Vrouw","Female"],["na","Zeg ik liever niet","Prefer not to say"]];
+const CHANNELS = [
+  ["friend","Moslimvriend(in), collega of klasgenoot","Muslim friend, colleague or classmate"],
+  ["partner","Partner"],
+  ["mosque","Moskeebezoek of open dag","Mosque visit or open day"],
+  ["quran","Koran(vertaling)","The Quran (translation)"],
+  ["books","Boeken","Books"],
+  ["youtube","YouTube"],
+  ["tiktok_instagram","TikTok of Instagram","TikTok or Instagram"],
+  ["podcast","Podcast"],
+  ["reddit_forum","Reddit of forum","Reddit or forum"],
+  ["lecture","Lezing of cursus","Lecture or course"],
+  ["travel","Reis naar een land met veel moslims","Travel to a Muslim-majority country"],
+  ["school","School of studie","School or university"],
+  OTHER
+];
+const INFO_CHANNELS = [
+  ["instagram","Instagram"],["tiktok","TikTok"],["youtube","YouTube"],["podcast","Podcast"],
+  ["website","Website of artikel","Website or article"],["reddit_forum","Reddit of forum","Reddit or forum"],
+  ["ai_chat","AI-chatbot (bijv. ChatGPT, Claude)","AI chatbot (e.g. ChatGPT, Claude)"],
+  ["book","Boek","Book"],["personal","Gesprek met een moslim","Conversation with a Muslim"],
+  ["mosque","Moskee of open dag","Mosque or open day"],["course","Cursus of lezing","Course or lecture"],
+  OTHER
+];
+const MESSENGERS = [
+  ["friend","Een moslimvriend(in) of collega","A Muslim friend or colleague"],
+  ["convert","Een bekeerling met een achtergrond zoals de mijne","A convert with a background like mine"],
+  ["scholar","Een imam of geleerde","An imam or scholar"],
+  ["academic","Een onafhankelijke deskundige (bijv. wetenschapper)","An independent expert (e.g. academic)"],
+  ["creator","Iemand online (YouTuber, podcastmaker)","Someone online (YouTuber, podcaster)"],
+  ["none","Niemand, ik zoek het liever zelf uit","Nobody, I prefer to find out myself"],
+  OTHER
+];
+const TOPICS = [
+  ["tawhid","De eenheid van God (tawhid)","The oneness of God (tawhid)"],
+  ["quran","De Koran zelf","The Quran itself"],
+  ["prophet","Het leven van de Profeet Mohammed","The life of the Prophet Muhammad"],
+  ["prayer","Gebed en discipline","Prayer and discipline"],
+  ["character","Karakter en gedrag van moslims","Character and conduct of Muslims"],
+  ["community","Gemeenschap en broederschap","Community and brotherhood/sisterhood"],
+  ["justice","Rechtvaardigheid en sociale waarden","Justice and social values"],
+  ["afterlife","Het leven na de dood","The afterlife"],
+  ["reason","Wetenschap en rede","Science and reason"],
+  ["jesus","De rol van Jezus in de islam","The role of Jesus in Islam"],
+  ["family","Familie- en gezinswaarden","Family values"]
+];
+
+/* ===== Vragenlijst 1: bekeerlingen ===== */
+const CONVERTS = {
+  key: "converts",
+  nl: {
+    title: "Onderzoek: de weg naar de islam",
+    sub: "Voor bekeerlingen · ca. 12 minuten",
+    intro: "Dit onderzoek gaat over hoe mensen de islam leren kennen: hoe hun leven eruitzag vóór en na de bekering, wat hen raakte en wat hen eerder had kunnen bereiken. De uitkomsten worden gebruikt om de islam beter en eerlijker uit te leggen aan niet-moslims. Invullen duurt ongeveer 12 minuten. Je doet anoniem mee en mag elke vraag overslaan.",
+    thanks: "Je antwoorden zijn opgeslagen. Deel de vragenlijst gerust met andere bekeerlingen."
+  },
+  en: {
+    title: "Research: the path to Islam",
+    sub: "For converts and reverts · about 12 minutes",
+    intro: "This research is about how people come to know Islam: what their life looked like before and after converting, what moved them, and what could have reached them sooner. The results will be used to explain Islam better and more honestly to non-Muslims. The survey takes about 12 minutes. You take part anonymously and can skip any question.",
+    thanks: "Your answers have been saved. Feel free to share the survey with other converts and reverts."
+  },
+  S: [
+    { nl:"Welkom", en:"Welcome", intro:true, q:[
+      { id:"consent", t:"consent", nl:"Ik ben 18 jaar of ouder, heb de uitleg en de privacyinformatie gelezen en doe vrijwillig mee.", en:"I am 18 or older, have read the information and privacy notice, and take part voluntarily." }
+    ]},
+    { nl:"Achtergrond", en:"Background", q:[
+      { id:"q1", t:"radio", nl:"Wat is je leeftijd?", en:"What is your age?", o:AGES },
+      { id:"q2", t:"radio", nl:"Gender", en:"Gender", o:GENDER },
+      { id:"q3", t:"text", nl:"In welk land woon je?", en:"Which country do you live in?" },
+      { id:"q4", t:"radio", nl:"In welke achtergrond ben je opgegroeid?", en:"What background were you raised in?", o:[
+        ["christian","Christelijk","Christian"],["nonreligious","Niet-religieus, atheïst of agnost","Non-religious, atheist or agnostic"],
+        ["jewish","Joods","Jewish"],["hindu_buddhist","Hindoeïstisch of boeddhistisch","Hindu or Buddhist"],OTHER] },
+      { id:"q5", t:"number", nl:"In welk jaar sprak je de shahada uit?", en:"In which year did you take your shahada?", min:1950, max:2030 },
+      { id:"q6", t:"number", nl:"Hoe oud was je toen?", en:"How old were you then?", min:5, max:100 },
+      { id:"q7", t:"radio", nl:"Had je op dat moment een partner die moslim was?", en:"Did you have a Muslim partner at the time?", o:[...YESNO,["none","Geen partner","No partner"]] }
+    ]},
+    { nl:"De weg naar de islam", en:"The path to Islam", q:[
+      { id:"q8", t:"checkbox", hint:"multi", nl:"Hoe kwam je voor het eerst echt in aanraking met de islam?", en:"How did you first really come into contact with Islam?", o:CHANNELS },
+      { id:"q9", t:"radio", nl:"Welke daarvan had de grootste invloed?", en:"Which of these had the biggest influence?", o:CHANNELS },
+      { id:"q10", t:"radio", nl:"Hoeveel tijd zat er tussen je eerste echte interesse en je shahada?", en:"How much time passed between your first real interest and your shahada?", o:[
+        ["lt6m","Minder dan 6 maanden","Less than 6 months"],["6-12m","6–12 maanden","6–12 months"],["1-3y","1–3 jaar","1–3 years"],["3-5y","3–5 jaar","3–5 years"],["gt5y","Meer dan 5 jaar","More than 5 years"]] },
+      { id:"q11", t:"checkbox", max:3, hint:"max3", nl:"Welke onderwerpen raakten je het meest?", en:"Which topics moved you the most?", o:[...TOPICS, OTHER] },
+      { id:"q28", t:"radio", nl:"Wie bracht de boodschap voor jou het best over?", en:"Who conveyed the message best for you?", o:MESSENGERS },
+      { id:"q12", t:"textarea", nl:"Wat was uiteindelijk het belangrijkste dat je over de streep trok?", en:"What was ultimately the most important thing that convinced you?" }
+    ]},
+    { nl:"Wat had je eerder kunnen bereiken?", en:"What could have reached you sooner?", q:[
+      { id:"q13", t:"radio", nl:"Kwam je eerder in je leven al in aanraking met de islam zonder dat het je raakte?", en:"Did you encounter Islam earlier in life without it moving you?", o:[...YESNO,["unsure","Weet ik niet","Not sure"]] },
+      { id:"q14", t:"textarea", show:["q13","yes"], nl:"Wat gebeurde er toen, en waarom raakte het je niet?", en:"What happened, and why didn't it move you then?" },
+      { id:"q15", t:"checkbox", hint:"multi", nl:"Wat hield je tegen of vertraagde je weg naar de islam?", en:"What held you back or slowed your path to Islam?", o:[
+        ["media","Negatief beeld in de media","Negative media image"],
+        ["muslim_behaviour","Gedrag van moslims","Behaviour of Muslims"],
+        ["culture","Cultuur die als religie werd gebracht","Culture presented as religion"],
+        ["language","Taal in de moskee (Arabisch, Turks e.d.)","Language in the mosque (Arabic, Turkish etc.)"],
+        ["fear_reaction","Angst voor de reactie van familie of vrienden","Fear of how family or friends would react"],
+        ["rules","Het gevoel dat er te veel regels waren","Feeling there were too many rules"],
+        ["women","Vragen over de positie van vrouwen","Questions about the position of women"],
+        ["no_answers","Geen goede antwoorden op mijn vragen","No good answers to my questions"],
+        ["no_muslims","Geen moslims in mijn omgeving","No Muslims around me"],
+        ["lifestyle","Mijn eigen levensstijl","My own lifestyle"],
+        ["nothing","Niets","Nothing"], OTHER] },
+      { id:"q27", t:"textarea", nl:"Welke bezwaren of vragen had je over de islam, en welk antwoord of welke ervaring nam ze weg?", en:"What objections or questions did you have about Islam, and what answer or experience resolved them?" },
+      { id:"q16", t:"textarea", nl:"Welke informatie had je eerder willen tegenkomen, en waar?", en:"What information do you wish you had come across sooner, and where?" },
+      { id:"q17", t:"radio", nl:"Via welk kanaal had dat jou destijds het best kunnen bereiken?", en:"Which channel would have reached you best back then?", o:INFO_CHANNELS },
+      { id:"q18", t:"textarea", nl:"Welke toon of aanpak werkt juist averechts bij mensen zoals jij vroeger?", en:"What tone or approach backfires with people like you used to be?" }
+    ]},
+    { nl:"Leven vóór en na", en:"Life before and after", q:[
+      { id:"q19", t:"grid", hint:{nl:"1 = helemaal oneens, 5 = helemaal eens",en:"1 = strongly disagree, 5 = strongly agree"}, nl:"Geef per stelling een score, voor vóór je bekering en voor nu.", en:"Rate each statement, for before your conversion and for now.", rows:[
+        ["family","Ik voel me verbonden met mijn familie.","I feel connected to my family."],
+        ["friends","Ik heb een hechte vriendenkring.","I have a close circle of friends."],
+        ["meaning","Ik ervaar zin en richting in mijn leven.","I experience meaning and direction in my life."],
+        ["peace","Ik voel innerlijke rust.","I feel inner peace."],
+        ["accepted","Ik voel me geaccepteerd in de samenleving.","I feel accepted in society."],
+        ["lonely","Ik voel me eenzaam.","I feel lonely."]] },
+      { id:"q20", t:"radio", nl:"Hoe reageerde je familie toen je vertelde dat je moslim was geworden?", en:"How did your family react when you told them you had become Muslim?", o:[
+        ["very_negative","Zeer negatief","Very negative"],["negative","Negatief","Negative"],["neutral","Neutraal","Neutral"],
+        ["positive","Positief","Positive"],["very_positive","Zeer positief","Very positive"],["not_told","Nog niet verteld","Haven't told them yet"]] },
+      { id:"q21", t:"radio", nl:"Ben je door je bekering vriendschappen kwijtgeraakt?", en:"Did you lose friendships because of your conversion?", o:[["no","Nee","No"],["few","Enkele","A few"],["many","Veel","Many"]] },
+      { id:"q22", t:"scale", ends:["notAtAll","veryMuch"], nl:"Hoe welkom voelde je je in de moslimgemeenschap?", en:"How welcome did you feel in the Muslim community?" },
+      { id:"q23", t:"textarea", nl:"Wat had je als nieuwe moslim nodig, en wat heb je gemist?", en:"What did you need as a new Muslim, and what did you miss?" }
+    ]},
+    { nl:"Afsluiting", en:"Closing", q:[
+      { id:"q24", t:"radio", nl:"Wil je meedoen aan een vervolggesprek via video (ca. 60 min)?", en:"Would you like to take part in a follow-up video interview (~60 min)?", o:YESNO },
+      { id:"q25", t:"email", show:["q24","yes"], hint:{nl:"Wordt los van je antwoorden bewaard.",en:"Stored separately from your answers."}, nl:"Je e-mailadres", en:"Your email address" },
+      { id:"q26", t:"textarea", nl:"Wil je nog iets toevoegen?", en:"Anything else you'd like to add?" }
+    ]}
+  ]
+};
+
+/* ===== Vragenlijst 2: niet-moslims ===== */
+const NONMUSLIMS = {
+  key: "nonmuslims",
+  nl: {
+    title: "Onderzoek: hoe kijk jij naar de islam?",
+    sub: "Voor niet-moslims · ca. 8 minuten",
+    intro: "Dit onderzoek gaat over hoe niet-moslims naar de islam kijken: welk beeld je hebt, waar dat vandaan komt en welke vragen of bezwaren je hebt. De uitkomsten helpen moslims om beter aan te sluiten bij de vragen die niet-moslims echt hebben. Er zijn geen goede of foute antwoorden en eerlijke kritiek is juist waardevol. Invullen duurt ongeveer 8 minuten. Je doet anoniem mee en mag elke vraag overslaan.",
+    thanks: "Je antwoorden zijn opgeslagen. Deel de vragenlijst gerust met anderen; elke mening telt."
+  },
+  en: {
+    title: "Research: how do you see Islam?",
+    sub: "For non-Muslims · about 8 minutes",
+    intro: "This research is about how non-Muslims see Islam: what image you have, where it comes from, and what questions or objections you have. The results help Muslims respond better to the questions non-Muslims actually have. There are no right or wrong answers, and honest criticism is especially valuable. The survey takes about 8 minutes. You take part anonymously and can skip any question.",
+    thanks: "Your answers have been saved. Feel free to share the survey with others; every opinion counts."
+  },
+  S: [
+    { nl:"Welkom", en:"Welcome", intro:true, q:[
+      { id:"consent", t:"consent", nl:"Ik ben 18 jaar of ouder, geen moslim, heb de uitleg en de privacyinformatie gelezen en doe vrijwillig mee.", en:"I am 18 or older, not Muslim, have read the information and privacy notice, and take part voluntarily." }
+    ]},
+    { nl:"Achtergrond", en:"Background", q:[
+      { id:"n1", t:"radio", nl:"Wat is je leeftijd?", en:"What is your age?", o:AGES },
+      { id:"n2", t:"radio", nl:"Gender", en:"Gender", o:GENDER },
+      { id:"n3", t:"text", nl:"In welk land woon je?", en:"Which country do you live in?" },
+      { id:"n4", t:"radio", nl:"Wat past het best bij jouw levensbeschouwing?", en:"What best describes your worldview?", o:[
+        ["christian","Christelijk","Christian"],["nonreligious","Niet-religieus, atheïst of agnost","Non-religious, atheist or agnostic"],
+        ["spiritual","Spiritueel, maar niet religieus","Spiritual but not religious"],["jewish","Joods","Jewish"],
+        ["hindu_buddhist","Hindoeïstisch of boeddhistisch","Hindu or Buddhist"],OTHER] }
+    ]},
+    { nl:"Jouw beeld van de islam", en:"Your image of Islam", q:[
+      { id:"n5", t:"radio", nl:"Ken je moslims persoonlijk?", en:"Do you know Muslims personally?", o:[
+        ["none","Nee","No"],["acquaintance","Alleen oppervlakkig (buren, collega's)","Only casually (neighbours, colleagues)"],
+        ["friend","Ja, als vriend(in)","Yes, as a friend"],["close","Ja, als goede vriend(in) of familie","Yes, a close friend or family"],["partner","Mijn partner is moslim","My partner is Muslim"]] },
+      { id:"n6", t:"checkbox", hint:"multi", nl:"Waar komt jouw beeld van de islam vooral vandaan?", en:"Where does your image of Islam mainly come from?", o:[
+        ["news","Nieuws (tv, kranten, nieuwssites)","News (TV, papers, news sites)"],["social","Sociale media","Social media"],
+        ["muslims","Moslims die ik ken","Muslims I know"],["school","School of studie","School or university"],
+        ["books","Boeken of documentaires","Books or documentaries"],["travel","Reizen","Travel"],
+        ["quran","Zelf de Koran gelezen","Reading the Quran myself"],OTHER] },
+      { id:"n7", t:"scale", ends:["veryNeg","veryPos"], nl:"Wat is je algemene indruk van de islam?", en:"What is your overall impression of Islam?" },
+      { id:"n8", t:"scale", ends:["nothing","aLot"], nl:"Hoeveel weet je over wat moslims geloven?", en:"How much do you know about what Muslims believe?" },
+      { id:"n9", t:"radio", nl:"Heb je ooit zelf informatie over de islam opgezocht?", en:"Have you ever looked up information about Islam yourself?", o:YESNO },
+      { id:"n10", t:"radio", show:["n9","yes"], nl:"Waar zocht je die informatie vooral?", en:"Where did you mainly look?", o:INFO_CHANNELS }
+    ]},
+    { nl:"Vragen en bezwaren", en:"Questions and objections", q:[
+      { id:"n11", t:"likert", hint:{nl:"1 = helemaal oneens, 5 = helemaal eens",en:"1 = strongly disagree, 5 = strongly agree"}, nl:"In hoeverre ben je het eens met deze stellingen?", en:"How much do you agree with these statements?", rows:[
+        ["knows_beliefs","Ik weet wat moslims geloven over God.","I know what Muslims believe about God."],
+        ["peaceful","Ik zie de islam als een vreedzame religie.","I see Islam as a peaceful religion."],
+        ["women","Ik denk dat vrouwen in de islam een gelijkwaardige positie hebben.","I think women have an equal position in Islam."],
+        ["fits_society","Ik denk dat de islam goed samengaat met de samenleving waarin ik woon.","I think Islam fits well with the society I live in."],
+        ["open_talk","Ik sta open voor een gesprek over geloof met een moslim.","I am open to a conversation about faith with a Muslim."],
+        ["meaning","Zingeving en geloof zijn belangrijk in mijn leven.","Meaning and faith are important in my life."]] },
+      { id:"n12", t:"checkbox", max:3, hint:"max3", nl:"Wat spreekt je aan in de islam, als er iets is?", en:"What appeals to you in Islam, if anything?", o:[...TOPICS, ["nothing","Niets","Nothing"], OTHER] },
+      { id:"n13", t:"checkbox", hint:"multi", nl:"Wat schrikt je af of roept vragen bij je op?", en:"What puts you off or raises questions for you?", o:[
+        ["violence","Geweld en extremisme in het nieuws","Violence and extremism in the news"],
+        ["women","De positie van vrouwen","The position of women"],
+        ["rules","Strenge regels","Strict rules"],
+        ["muslim_behaviour","Gedrag van moslims","Behaviour of Muslims"],
+        ["culture","Cultuur die ik niet ken","Unfamiliar culture"],
+        ["freedom","Vrijheid, bijv. om van geloof te veranderen","Freedom, e.g. to change religion"],
+        ["lgbt","Houding tegenover lhbti+","Attitude towards LGBTQ+"],
+        ["lifestyle","Past niet bij mijn levensstijl","Doesn't fit my lifestyle"],
+        ["no_god","Ik geloof niet in God","I don't believe in God"],
+        ["nothing","Niets","Nothing"], OTHER] },
+      { id:"n14", t:"textarea", nl:"Welke vraag over de islam zou je het liefst eens eerlijk beantwoord zien?", en:"What question about Islam would you most like to see answered honestly?" },
+      { id:"n15", t:"radio", nl:"Heb je ooit overwogen om meer over de islam te leren?", en:"Have you ever considered learning more about Islam?", o:[
+        ["never","Nee, nooit","No, never"],["thought","Ik heb er weleens aan gedacht","I've thought about it"],
+        ["learning","Ja, ik verdiep me er nu in","Yes, I'm learning about it now"],["considering","Ik overweeg serieus om moslim te worden","I'm seriously considering becoming Muslim"]] }
+    ]},
+    { nl:"Hoe zou je bereikt willen worden?", en:"How would you want to be reached?", q:[
+      { id:"n16", t:"radio", nl:"Als je meer over de islam zou willen weten, via welk kanaal het liefst?", en:"If you wanted to know more about Islam, which channel would you prefer?", o:INFO_CHANNELS },
+      { id:"n17", t:"radio", nl:"Van wie zou je het meest aannemen?", en:"Who would you trust most to tell you about it?", o:MESSENGERS },
+      { id:"n18", t:"textarea", nl:"Wat zou je afschrikken in de manier waarop moslims over hun geloof vertellen?", en:"What would put you off in the way Muslims talk about their faith?" },
+      { id:"n19", t:"radio", nl:"Zou je een open dag van een moskee bezoeken?", en:"Would you visit a mosque open day?", o:[["yes","Ja","Yes"],["maybe","Misschien","Maybe"],["no","Nee","No"],["done","Heb ik al gedaan","I already have"]] }
+    ]},
+    { nl:"Afsluiting", en:"Closing", q:[
+      { id:"n20", t:"radio", nl:"Wil je meedoen aan een vervolggesprek via video (ca. 45 min)?", en:"Would you like to take part in a follow-up video interview (~45 min)?", o:YESNO },
+      { id:"n21", t:"email", show:["n20","yes"], hint:{nl:"Wordt los van je antwoorden bewaard.",en:"Stored separately from your answers."}, nl:"Je e-mailadres", en:"Your email address" },
+      { id:"n22", t:"textarea", nl:"Wil je nog iets toevoegen?", en:"Anything else you'd like to add?" }
+    ]}
+  ]
+};
+
+
+/* ===== Formulier 3: vrijwilligers (NIET anoniem, aparte tabel) ===== */
+const SECTORS = [
+  ["education","Onderwijs","Education"],["healthcare","Zorg en welzijn","Healthcare and social care"],
+  ["it","IT en techniek","IT and engineering"],["media","Media, communicatie en marketing","Media, communications and marketing"],
+  ["creative","Design en creatief","Design and creative"],["legal","Juridisch","Legal"],
+  ["finance","Financiën en administratie","Finance and administration"],["business","Ondernemer of zakelijke dienstverlening","Entrepreneur or business services"],
+  ["government","Overheid en non-profit","Government and non-profit"],["science","Wetenschap en onderzoek","Science and research"],
+  ["trades","Bouw, techniek of ambacht","Trades and construction"],["services","Horeca, retail of logistiek","Hospitality, retail or logistics"],
+  ["student","Student"],OTHER
+];
+const SKILLS = [
+  ["video","Video maken en monteren","Video production and editing"],["social","Sociale media","Social media"],
+  ["design","Grafisch ontwerp","Graphic design"],["writing","Schrijven en redigeren","Writing and editing"],
+  ["translation","Vertalen","Translation"],["it","Programmeren en IT","Programming and IT"],
+  ["events","Evenementen organiseren","Organising events"],["teaching","Lesgeven of trainen","Teaching or training"],
+  ["coaching","Coaching of begeleiding","Coaching or mentoring"],["counseling","Psychosociale hulp (professioneel)","Psychosocial support (professional)"],
+  ["legal","Juridisch advies","Legal advice"],["research","Onderzoek en data-analyse","Research and data analysis"],
+  ["photo","Fotografie","Photography"],["speaking","Spreken in het openbaar","Public speaking"],
+  ["admin","Organisatie en administratie","Organisation and administration"],["islamic","Islamitische kennis (bijv. les geven, Koran)","Islamic knowledge (e.g. teaching, Quran)"],
+  OTHER
+];
+const ROLES = [
+  ["buddy","Buddy of mentor voor nieuwe moslims","Buddy or mentor for new Muslims"],
+  ["story","Mijn bekeringsverhaal delen (video, podcast, interview)","Sharing my conversion story (video, podcast, interview)"],
+  ["content","Content maken","Creating content"],
+  ["questions","Vragen van geïnteresseerden beantwoorden","Answering questions from interested people"],
+  ["events","Helpen bij open dagen en evenementen","Helping at open days and events"],
+  ["translate","Vertalen","Translation"],
+  ["tech","Technische hulp (website, apps, data)","Technical support (website, apps, data)"],
+  ["professional","Advies vanuit mijn beroep","Advice from my profession"],
+  ["strategy","Meedenken over onderzoek en strategie","Contributing to research and strategy"],
+  ["network","Mensen uit mijn netwerk betrekken","Involving people from my network"],
+  OTHER
+];
+const LANGS = [["nl","Nederlands","Dutch"],["en","Engels","English"],["tr","Turks","Turkish"],["ar","Arabisch","Arabic"],
+  ["fr","Frans","French"],["de","Duits","German"],["es","Spaans","Spanish"],OTHER];
+
+const VOLUNTEER = {
+  key: "volunteer",
+  nl: {
+    title: "Word vrijwilliger",
+    sub: "Bijdragen met je beroep, kennis en tijd · ca. 5 minuten",
+    intro: "Bouw mee aan een netwerk van bekeerlingen en betrokken moslims die met hun beroep, kennis en tijd bijdragen aan een gezamenlijk doel: de islam helder en eerlijk uitleggen en nieuwe moslims goed opvangen. Het gaat om je kennis en tijd, niet om geld: we vragen nooit om een financiële bijdrage. Invullen duurt ongeveer 5 minuten.",
+    privacy: "Dit formulier is niet anoniem. {r} bewaart je gegevens in een beveiligde database in de EU, alleen om je te benaderen voor vrijwilligerswerk binnen dit netwerk. Je gegevens worden niet verkocht en niet buiten het netwerk gedeeld. Andere vrijwilligers zien alleen je naam, beroep en vaardigheden, en alleen als je daar toestemming voor geeft. Je kunt je gegevens altijd laten inzien, wijzigen of verwijderen via {c}.",
+    thanks: "Bedankt voor je aanmelding! We nemen contact met je op zodra er iets is dat bij je past."
+  },
+  en: {
+    title: "Become a volunteer",
+    sub: "Contribute with your profession, skills and time · about 5 minutes",
+    intro: "Help build a network of converts and engaged Muslims who contribute their profession, knowledge and time to a shared goal: explaining Islam clearly and honestly, and welcoming new Muslims well. This is about your knowledge and time, not money: we never ask for financial contributions. It takes about 5 minutes.",
+    privacy: "This form is not anonymous. {r} stores your details in a secure database in the EU, only to contact you about volunteering within this network. Your details are never sold or shared outside the network. Other volunteers only see your name, profession and skills, and only if you allow it. You can always ask to view, change or delete your details via {c}.",
+    thanks: "Thank you for signing up! We'll get in touch as soon as there's something that fits you."
+  },
+  S: [
+    { nl:"Welkom", en:"Welcome", intro:true, q:[
+      { id:"consent", t:"consent", nl:"Ik ben 18 jaar of ouder en geef toestemming om mijn gegevens voor dit vrijwilligersnetwerk te bewaren.", en:"I am 18 or older and consent to my details being stored for this volunteer network." },
+      { id:"share_ok", t:"check", nl:"Andere vrijwilligers mogen mijn naam, beroep en vaardigheden zien, zodat we elkaar kunnen vinden (optioneel).", en:"Other volunteers may see my name, profession and skills, so we can find each other (optional)." }
+    ]},
+    { nl:"Over jou", en:"About you", q:[
+      { id:"v_name", t:"text", req:true, nl:"Naam", en:"Name" },
+      { id:"v_email", t:"email", req:true, nl:"E-mailadres", en:"Email address" },
+      { id:"v_phone", t:"tel", nl:"Telefoonnummer (optioneel)", en:"Phone number (optional)" },
+      { id:"v_city", t:"text", nl:"Woonplaats en land", en:"City and country" },
+      { id:"v_convert", t:"radio", nl:"Ben je zelf bekeerling?", en:"Are you a convert/revert yourself?", o:[
+        ["yes","Ja","Yes"],["raised","Nee, ik ben als moslim opgegroeid","No, I was raised Muslim"],["na","Zeg ik liever niet","Prefer not to say"]] },
+      { id:"v_langs", t:"checkbox", hint:"multi", nl:"Welke talen spreek je goed?", en:"Which languages do you speak well?", o:LANGS }
+    ]},
+    { nl:"Beroep en kennis", en:"Profession and skills", q:[
+      { id:"v_profession", t:"text", req:true, nl:"Wat is je beroep of functie?", en:"What is your profession or job title?" },
+      { id:"v_sector", t:"radio", nl:"In welke sector werk je?", en:"Which sector do you work in?", o:SECTORS },
+      { id:"v_skills", t:"checkbox", hint:"multi", nl:"Welke vaardigheden kun je inzetten?", en:"Which skills can you contribute?", o:SKILLS },
+      { id:"v_experience", t:"textarea", nl:"Welke kennis of ervaring heb je die waardevol kan zijn? Denk ook aan netwerk, hobby's of eerder vrijwilligerswerk.", en:"What knowledge or experience do you have that could be valuable? Think also of your network, hobbies or past volunteering." }
+    ]},
+    { nl:"Jouw bijdrage", en:"Your contribution", q:[
+      { id:"v_roles", t:"checkbox", hint:"multi", nl:"Hoe zou je willen bijdragen?", en:"How would you like to contribute?", o:ROLES },
+      { id:"v_contribution", t:"textarea", req:true, nl:"Hoe kan jouw beroep of ervaring concreet bijdragen aan het gezamenlijke doel?", en:"How could your profession or experience concretely contribute to the shared goal?" },
+      { id:"v_hours", t:"radio", nl:"Hoeveel tijd kun je ongeveer vrijmaken?", en:"How much time could you roughly give?", o:[
+        ["lt2","Minder dan 2 uur per maand","Less than 2 hours a month"],["2-5","2–5 uur per maand","2–5 hours a month"],
+        ["5-10","5–10 uur per maand","5–10 hours a month"],["10+","Meer dan 10 uur per maand","More than 10 hours a month"],
+        ["project","Per project, wisselend","Per project, varies"]] },
+      { id:"v_mode", t:"radio", nl:"Waar kun je helpen?", en:"Where can you help?", o:[
+        ["online","Online","Online"],["onsite","Op locatie","On site"],["both","Allebei","Both"]] },
+      { id:"v_notes", t:"textarea", nl:"Wil je nog iets toevoegen?", en:"Anything else you'd like to add?" }
+    ]}
+  ]
+};
+
+const SURVEYS = { converts: CONVERTS, nonmuslims: NONMUSLIMS, volunteer: VOLUNTEER };
+
+/* ===== Status ===== */
+const params = new URLSearchParams(location.search);
+const sParam = params.get("s");
+let survey = sParam === "open" ? NONMUSLIMS : (SURVEYS[sParam] || null);
+const src = (params.get("src") || "direct").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 30) || "direct";
+let lang = params.get("lang") === "en" ? "en" : params.get("lang") === "nl" ? "nl"
+         : (navigator.language || "").toLowerCase().startsWith("nl") ? "nl" : "en";
+let st = {};
+let step = 0;
+let qIndex = {};
+let qNum = {};
+
+function setSurvey(s) {
+  survey = s; st = {}; step = 0; qIndex = {}; qNum = {};
+  let n = 0;
+  for (const sec of s.S) for (const q of sec.q) { qIndex[q.id] = q; if (q.t !== "consent" && q.t !== "check") qNum[q.id] = ++n; }
+}
+if (survey) setSurvey(survey);
+
+/* ===== Hulpfuncties ===== */
+const $ = id => document.getElementById(id);
+const tx = k => T[lang][k];
+const L = o => o[lang];
+const optLabel = o => o.length === 2 ? o[1] : (lang === "nl" ? o[1] : o[2]);
+function el(tag, attrs = {}, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") e.className = v;
+    else if (k === "text") e.textContent = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else if (k === "checked") e.checked = v;
+    else if (k === "value") e.value = v;
+    else e.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of kids.flat()) if (c != null) e.append(c);
+  return e;
+}
+const fill = (s, map) => s.replace(/\{(\w)\}/g, (_, k) => map[k] ?? "");
+const toTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+/* ===== Weergave ===== */
+function scaleRow(name, ends) {
+  const box = el("div", { class: "scale", role: "radiogroup" });
+  for (let i = 1; i <= 5; i++) {
+    box.append(el("label", {},
+      el("input", { type: "radio", name, value: String(i), checked: st[name] === i,
+        onchange: () => { st[name] = i; } }),
+      String(i)));
+  }
+  const wrap = el("div", {}, box);
+  if (ends) wrap.append(el("div", { class: "ends" }, el("span", { text: tx(ends[0]) }), el("span", { text: tx(ends[1]) })));
+  return wrap;
+}
+
+function renderQ(q) {
+  const fs = el("fieldset", { "data-q": q.id });
+  if (q.show) fs.dataset.show = q.show.join(":");
+  if (q.t !== "consent" && q.t !== "check") fs.append(el("legend", { text: `${qNum[q.id]}. ${L(q)}${q.req ? " *" : ""}` }));
+  if (q.hint) fs.append(el("p", { class: "hint", text: typeof q.hint === "string" ? tx(q.hint) : L(q.hint) }));
+
+  if (q.t === "radio" || q.t === "checkbox") {
+    const multi = q.t === "checkbox";
+    if (multi && !Array.isArray(st[q.id])) st[q.id] = [];
+    if (q.max) fs.dataset.max = q.max;
+    for (const o of q.o) {
+      const code = o[0];
+      fs.append(el("label", { class: "opt" },
+        el("input", { type: q.t, name: q.id, value: code,
+          checked: multi ? st[q.id].includes(code) : st[q.id] === code,
+          onchange: e => {
+            if (multi) {
+              const set = new Set(st[q.id]);
+              e.target.checked ? set.add(code) : set.delete(code);
+              st[q.id] = [...set];
+            } else st[q.id] = code;
+            update();
+          } }),
+        el("span", { text: optLabel(o) })));
+    }
+    if (q.o.some(o => o[0] === "other")) {
+      fs.append(el("div", { class: "other", "data-other": q.id },
+        el("input", { type: "text", maxlength: "300", placeholder: tx("other"), "aria-label": tx("other"),
+          value: st[q.id + "_other"] || "", oninput: e => { st[q.id + "_other"] = e.target.value; } })));
+    }
+  } else if (q.t === "textarea") {
+    fs.append(el("textarea", { maxlength: "3000", "aria-label": L(q), value: st[q.id] || "",
+      oninput: e => { st[q.id] = e.target.value; } }));
+  } else if (["text", "number", "email", "tel"].includes(q.t)) {
+    fs.append(el("input", { type: q.t, min: q.min, max: q.max, maxlength: "200",
+      inputmode: q.t === "number" ? "numeric" : null, autocomplete: q.t === "email" ? "email" : q.t === "tel" ? "tel" : q.id === "v_name" ? "name" : "off",
+      "aria-label": L(q), value: st[q.id] ?? "",
+      oninput: e => { st[q.id] = q.t === "number" ? (e.target.value === "" ? "" : Number(e.target.value)) : e.target.value; } }));
+  } else if (q.t === "scale") {
+    fs.append(scaleRow(q.id, q.ends));
+  } else if (q.t === "grid") {
+    for (const r of q.rows) {
+      fs.append(el("div", { class: "gridrow" },
+        el("p", { class: "stmt", text: optLabel(r) }),
+        el("p", { class: "lbl", text: tx("before") }), scaleRow(`${q.id}_${r[0]}_before`),
+        el("p", { class: "lbl", text: tx("now") }), scaleRow(`${q.id}_${r[0]}_now`)));
+    }
+  } else if (q.t === "likert") {
+    for (const r of q.rows) {
+      fs.append(el("div", { class: "gridrow" },
+        el("p", { class: "stmt", text: optLabel(r) }),
+        scaleRow(`${q.id}_${r[0]}`, ["disagree", "agree"])));
+    }
+  } else if (q.t === "check") {
+    fs.append(el("label", { class: "opt" },
+      el("input", { type: "checkbox", name: q.id, checked: !!st[q.id], onchange: e => { st[q.id] = e.target.checked; } }),
+      el("span", { text: L(q) })));
+  } else if (q.t === "consent") {
+    fs.append(el("label", { class: "opt" },
+      el("input", { type: "checkbox", name: "consent", checked: !!st.consent,
+        onchange: e => { st.consent = e.target.checked; if (e.target.checked) $("msg").textContent = ""; } }),
+      el("span", { text: L(q) })));
+  }
+  return fs;
+}
+
+function volunteerBlock(onclick) {
+  return el("section", { class: "vol" },
+    el("h3", { text: tx("volunteerT") }),
+    el("p", { text: tx("volunteerGoal") }),
+    el("button", { type: "button", class: "choice", onclick },
+      el("strong", { text: tx("volunteerBtn") }), el("span", { text: tx("volunteerBtnSub") })));
+}
+
+function renderChooser() {
+  $("title").textContent = tx("brand");
+  $("sub").textContent = tx("tagline");
+  document.querySelector(".progress").hidden = true;
+  $("steplbl").hidden = true;
+  $("form").querySelector("nav").hidden = true;
+  const pick = s => () => { setSurvey(s); render(); toTop(); };
+  $("step").replaceChildren(
+    el("h2", { text: tx("chooseT") }),
+    el("p", { class: "hint", text: tx("chooseSub") }),
+    el("button", { type: "button", class: "choice", onclick: pick(CONVERTS) },
+      el("strong", { text: tx("chooseConvert") }), el("span", { text: tx("chooseConvertSub") })),
+    el("button", { type: "button", class: "choice", onclick: pick(NONMUSLIMS) },
+      el("strong", { text: tx("chooseOpen") }), el("span", { text: tx("chooseOpenSub") })),
+    el("p", { class: "hint", text: tx("chooseNote") }),
+    volunteerBlock(pick(VOLUNTEER)));
+}
+
+function render() {
+  document.documentElement.lang = lang;
+  $("brand").textContent = tx("brand");
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === lang));
+  $("msg").textContent = "";
+  $("foot").textContent = `© ${new Date().getFullYear()} ${tx("brand")} · islamitischegemeenschap.nl`;
+  if (!survey) { document.title = `${tx("brand")} · ${tx("tagline")}`; renderChooser(); return; }
+
+  const txt = survey[lang];
+  document.title = `${txt.title} · ${tx("brand")}`;
+  $("title").textContent = txt.title;
+  $("sub").textContent = txt.sub;
+  document.querySelector(".progress").hidden = false;
+  $("steplbl").hidden = false;
+  $("form").querySelector("nav").hidden = false;
+
+  const sec = survey.S[step];
+  const box = $("step");
+  box.replaceChildren(el("h2", { text: L(sec) }));
+  if (sec.intro) {
+    box.append(el("p", { text: txt.intro }));
+    box.append(el("details", {},
+      el("summary", { text: tx("privacyT") }),
+      el("p", { text: fill(txt.privacy || tx("privacy"), { r: CONFIG.RESEARCHER, c: CONFIG.CONTACT, d: CONFIG.DELETE_BY }) })));
+    if (DEMO) box.append(el("p", { class: "demo", text: tx("demo") }));
+  }
+  for (const q of sec.q) box.append(renderQ(q));
+
+  $("bar").style.width = `${((step + 1) / survey.S.length) * 100}%`;
+  $("steplbl").textContent = fill(tx("step"), { a: step + 1, b: survey.S.length });
+  $("back").textContent = tx("back");
+  $("back").hidden = step === 0 && !!sParam;
+  $("next").textContent = step === survey.S.length - 1 ? tx("submit") : tx("next");
+  update();
+}
+
+function update() {
+  document.querySelectorAll("[data-show]").forEach(fs => {
+    const [qid, val] = fs.dataset.show.split(":");
+    fs.hidden = st[qid] !== val;
+  });
+  document.querySelectorAll("[data-other]").forEach(d => {
+    const v = st[d.dataset.other];
+    d.hidden = !(Array.isArray(v) ? v.includes("other") : v === "other");
+  });
+  document.querySelectorAll("fieldset[data-max]").forEach(fs => {
+    const max = Number(fs.dataset.max);
+    const boxes = [...fs.querySelectorAll("input[type=checkbox]")];
+    const count = boxes.filter(b => b.checked).length;
+    boxes.forEach(b => { b.disabled = !b.checked && count >= max; });
+  });
+}
+
+/* ===== Versturen ===== */
+async function post(table, row) {
+  const headers = { apikey: CONFIG.SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" };
+  if (!CONFIG.SUPABASE_KEY.startsWith("sb_")) headers.Authorization = "Bearer " + CONFIG.SUPABASE_KEY;
+  const r = await fetch(`${CONFIG.SUPABASE_URL}/rest/v1/${table}`, { method: "POST", headers, body: JSON.stringify(row) });
+  if (!r.ok) throw new Error(`${r.status} ${await r.text()}`);
+}
+
+const isEmpty = v => v === "" || v == null || (Array.isArray(v) && v.length === 0);
+const chose = (v, code) => Array.isArray(v) ? v.includes(code) : v === code;
+
+function buildAnswers() {
+  const a = {};
+  for (const [k, v] of Object.entries(st)) {
+    if ((qIndex[k]?.t === "email" && survey.key !== "volunteer") || isEmpty(v)) continue;
+    a[k] = typeof v === "string" ? v.trim() : v;
+  }
+  for (const q of Object.values(qIndex)) {
+    if (q.show && st[q.show[0]] !== q.show[1]) delete a[q.id];
+  }
+  for (const k of Object.keys(a)) {
+    if (k.endsWith("_other") && !chose(st[k.slice(0, -6)], "other")) delete a[k];
+  }
+  return a;
+}
+
+function showThanks() {
+  $("form").hidden = true;
+  document.querySelector(".progress").hidden = true;
+  $("steplbl").hidden = true;
+  $("thanks").replaceChildren(
+    el("h2", { text: tx("thanksT") }),
+    el("p", { text: survey[lang].thanks }),
+    DEMO ? el("p", { class: "demo", text: tx("demo") }) : null,
+    survey.key === "converts" ? volunteerBlock(() => {
+      setSurvey(VOLUNTEER); $("thanks").hidden = true; $("form").hidden = false;
+      const b = $("next"); b.disabled = false; render(); toTop();
+    }) : null);
+  $("thanks").hidden = false;
+  toTop();
+}
+
+async function submitVolunteer(btn) {
+  const a = buildAnswers();
+  const pick = k => { const v = (st[k] || "").toString().trim(); delete a[k]; return v || null; };
+  const row = { lang, src, name: pick("v_name"), email: pick("v_email"), phone: pick("v_phone"), share_ok: !!st.share_ok, data: a };
+  delete row.data.share_ok;
+  try {
+    if (DEMO) console.log("DEMO – zou versturen (volunteers):", row);
+    else if ($("hp").value === "") await post("volunteers", row);
+    showThanks();
+  } catch (e) {
+    console.error(e);
+    $("msg").textContent = tx("error");
+    btn.disabled = false; btn.textContent = tx("submit");
+  }
+}
+
+async function submit() {
+  const btn = $("next");
+  btn.disabled = true; btn.textContent = tx("sending"); $("msg").textContent = "";
+  if (survey.key === "volunteer") return submitVolunteer(btn);
+  const emailQ = Object.values(qIndex).find(q => q.t === "email");
+  const email = emailQ && st[emailQ.show[0]] === emailQ.show[1] ? (st[emailQ.id] || "").trim() : "";
+  const row = { survey: survey.key, lang, src, answers: buildAnswers() };
+  try {
+    if (DEMO) {
+      console.log("DEMO – zou versturen:", row, email ? { email } : "");
+    } else if ($("hp").value === "") {
+      await post("responses", row);
+      if (email) {
+        try { await post("contacts", { survey: survey.key, lang, email }); } catch (e) { console.warn("contact not saved", e); }
+      }
+    }
+    showThanks();
+  } catch (e) {
+    console.error(e);
+    $("msg").textContent = tx("error");
+    btn.disabled = false; btn.textContent = tx("submit");
+  }
+}
+
+/* ===== Navigatie ===== */
+$("form").addEventListener("submit", e => {
+  e.preventDefault();
+  if (!survey) return;
+  if (step === 0 && !st.consent) { $("msg").textContent = tx("consentReq"); return; }
+  const missing = survey.S[step].q.find(q => q.req && isEmpty(typeof st[q.id] === "string" ? st[q.id].trim() : st[q.id]));
+  if (missing) { $("msg").textContent = tx("required"); document.querySelector(`[data-q="${missing.id}"] input, [data-q="${missing.id}"] textarea`)?.focus(); return; }
+  const badEmail = survey.S[step].q.find(q => q.t === "email" && q.req && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test((st[q.id] || "").trim()));
+  if (badEmail) { $("msg").textContent = tx("emailInvalid"); return; }
+  if (step < survey.S.length - 1) { step++; render(); toTop(); }
+  else submit();
+});
+$("back").addEventListener("click", () => {
+  if (step > 0) { step--; render(); toTop(); }
+  else if (!sParam) { survey = null; render(); toTop(); }
+});
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => { lang = b.dataset.lang; render(); }));
+
+render();
+</script>
+</body>
+</html>
